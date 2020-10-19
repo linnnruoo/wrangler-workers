@@ -1,14 +1,17 @@
 # 👷 Wrangler Workers
 
-#### Wrangler
+Visit https://app.linruolynn.workers.dev/ for the live version
 
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
+### /links route
 
-```
-wrangler generate projectname https://github.com/cloudflare/worker-template
-```
+- Returns 3 links in JSON format
 
-Further documentation for Wrangler can be found [here](https://developers.cloudflare.com/workers/tooling/wrangler).
+### .\* routes
+
+- Sets up an HTML page by retrieving it from `https://static-links-page.signalnerve.workers.dev`
+- Updates the links
+- Displays profile, name and avatar
+- Changes background color and title
 
 ### Getting started
 
