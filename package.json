@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "cloudflare-oa",
+  "name": "app",
   "version": "1.0.0",
   "description": "A template for kick starting a Cloudflare Workers project",
   "main": "index.js",
@@ -12,5 +12,8 @@
   "license": "MIT",
   "devDependencies": {
     "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "serverless-cloudflare-workers": "^1.2.0"
   }
 }
