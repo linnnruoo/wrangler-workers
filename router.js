@@ -2,7 +2,7 @@
  * Helper functions that when passed a request will return a
  * boolean indicating if the request uses that HTTP method,
  * header, host or referrer.
- * https://github.com/cloudflare/worker-template-router
+ * source: https://github.com/cloudflare/worker-template-router
  */
 const Method = method => req =>
   req.method.toLowerCase() === method.toLowerCase()
