@@ -23,7 +23,7 @@ function JSONLinksHandler() {
   return new Response(body, init)
 }
 
-function HTMLHandler() {
+async function HTMLHandler() {
   const init = { headers: { 'Content-Type': 'text/html' } }
   const pageResponse = await fetch(commons.STATIC_URL)
 
@@ -32,6 +32,8 @@ function HTMLHandler() {
     .on('img#avatar', new transformers.UserProfileTransformer('src'))
     .on('h1#name', new transformers.UserProfileTransformer('name'))
     .on('div#links', new transformers.LinksTransformer(commons.LINKS))
+    .on('title', new transformers.UserProfileTransformer('title'))
+    .on('body', new transformers.UserProfileTransformer('class'))
 
   try {
     return rewriter.transform(pageResponse)

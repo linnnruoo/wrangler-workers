@@ -11,12 +11,12 @@ class UserProfileTransformer {
   constructor(attributeName) {
     this.attributeName = attributeName
     this.displayProfile = this.displayProfile.bind(this)
-    this.displayAvatar = this.displayAvatar.bind(this)
-    this.displayName = this.displayName.bind(this)
+    this.setAvatar = this.setAvatar.bind(this)
+    this.setName = this.setName.bind(this)
+    this.changeBackground = this.changeBackground.bind(this)
   }
 
-  displayProfile(element) {
-    const attribute = element.getAttribute(this.attributeName)
+  displayProfile(element, attribute) {
     if (attribute && this.attributeName === 'style') {
       element.setAttribute(
         this.attributeName,
@@ -25,27 +25,40 @@ class UserProfileTransformer {
     }
   }
 
-  displayAvatar(element) {
+  setAvatar(element) {
     if (this.attributeName === 'src') {
       element.setAttribute(this.attributeName, commons.AVATAR_URL)
     }
   }
 
-  displayName(element) {
-    if (this.attributeName === 'name') {
+  setName(element) {
+    // sets the name to be displayed and the title of the html page
+    if (this.attributeName === 'name' || this.attributeName === 'title') {
       element.setInnerContent(commons.NAME)
     }
   }
 
+  changeBackground(element, attribute) {
+    // changes the background color of the body
+    if (attribute && this.attributeName === 'class') {
+      element.setAttribute(
+        this.attributeName,
+        attribute.replace('bg-gray-900', 'bg-blue-900'),
+      )
+    }
+  }
+
   async element(element) {
-    this.displayProfile(element)
-    this.displayAvatar(element)
-    this.displayName(element)
+    const attribute = element.getAttribute(this.attributeName)
+    this.displayProfile(element, attribute)
+    this.setAvatar(element)
+    this.setName(element)
+    this.changeBackground(element, attribute)
   }
 }
 
 /**
- * Transformer class to trasnform the links into hyperlink </a> format
+ * Transformer class to trasnform the links into the hyperlink </a> format
  */
 class LinksTransformer {
   constructor(links) {
@@ -53,10 +66,10 @@ class LinksTransformer {
   }
 
   async element(element) {
-    const parsedLinks = this.links.map(
-      link => `<a href="${link.url}">${link.name}</a>`,
-    )
-    element.setInnerContent(parsedLinks, { html: true })
+    this.links.map(link => {
+      const parsedLink = `<a href="${link.url}">${link.name}</a>`
+      element.append(parsedLink, { html: true })
+    })
   }
 }
 
