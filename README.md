@@ -17,6 +17,7 @@ Further documentation for Wrangler can be found [here](https://developers.cloudf
 ### Getting started
 
 ```
+wrangler dev
 wrangler preview --watch
 ```
 
