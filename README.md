@@ -1,22 +1,22 @@
-# 👷 `worker-template` Hello World
+# 👷 Wrangler Workers
 
-A template for kick starting a Cloudflare worker project.
+Visit https://app.linruolynn.workers.dev/ for the live version
 
-[`index.js`](https://github.com/cloudflare/worker-template/blob/master/index.js) is the content of the Workers script.
+### /links route
 
-#### Wrangler
+- Returns 3 links in JSON format
 
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
+### .\* routes
 
-```
-wrangler generate projectname https://github.com/cloudflare/worker-template
-```
-
-Further documentation for Wrangler can be found [here](https://developers.cloudflare.com/workers/tooling/wrangler).
+- Sets up an HTML page by retrieving it from `https://static-links-page.signalnerve.workers.dev`
+- Updates the links
+- Displays profile, name and avatar
+- Changes background color and title
 
 ### Getting started
 
 ```
+wrangler dev
 wrangler preview --watch
 ```
 
