@@ -1,12 +1,12 @@
 # 👷 Wrangler Workers
 
-#### Wrangler
+Visit https://app.linruolynn.workers.dev/ for the live version
 
-# /links route
+### /links route
 
 - Returns 3 links in JSON format
 
-# .\* routes
+### .\* routes
 
 - Sets up an HTML page by retrieving it from `https://static-links-page.signalnerve.workers.dev`
 - Updates the links
